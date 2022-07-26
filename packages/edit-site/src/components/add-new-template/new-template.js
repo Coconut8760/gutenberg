@@ -41,6 +41,7 @@ import {
 	useTaxonomiesMenuItems,
 	usePostTypeMenuItems,
 	useAuthorMenuItem,
+	usePostTypeArchiveMenuItems,
 } from './utils';
 import AddCustomGenericTemplateModal from './add-custom-generic-template-modal';
 import { useHistory } from '../routes';
@@ -292,6 +293,7 @@ function useMissingTemplates(
 	} );
 	const missingTemplates = [
 		...enhancedMissingDefaultTemplateTypes,
+		...usePostTypeArchiveMenuItems(),
 		...postTypesMenuItems,
 		...taxonomiesMenuItems,
 	];
