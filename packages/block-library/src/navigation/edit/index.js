@@ -403,8 +403,6 @@ function Navigation( {
 		ref,
 	] );
 
-	const navigationSelectorRef = useRef();
-
 	const resetToEmptyBlock = useCallback( () => {
 		registry.batch( () => {
 			setAttributes( {
@@ -667,7 +665,6 @@ function Navigation( {
 				<BlockControls>
 					<ToolbarGroup className="wp-block-navigation__toolbar-menu-selector">
 						<NavigationMenuSelector
-							ref={ navigationSelectorRef }
 							currentMenuId={ ref }
 							clientId={ clientId }
 							onSelectNavigationMenu={ setRef }
