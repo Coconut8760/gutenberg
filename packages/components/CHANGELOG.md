@@ -15,6 +15,7 @@
 -   `ColorPicker`: fix layout overflow [#42992](https://github.com/WordPress/gutenberg/pull/42992)).
 -   `ToolsPanel`: Constrain grid columns to 50% max-width ([#42795](https://github.com/WordPress/gutenberg/pull/42795)).
 -   `Popover`: anchor correctly to parent node when no explicit anchor is passed ([#42971](https://github.com/WordPress/gutenberg/pull/42971)).
+-   `Popover`: fix shift limit when anchor is inside an iframe [#42950](https://github.com/WordPress/gutenberg/pull/42950)).
 
 ### Enhancements
 
