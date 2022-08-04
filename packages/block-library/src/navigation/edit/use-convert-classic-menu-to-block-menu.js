@@ -105,7 +105,6 @@ function useConvertClassicToBlockMenu( clientId ) {
 			.catch( ( err ) => {
 				setError( err?.message );
 				setStatus( CLASSIC_MENU_CONVERSION_ERROR );
-
 				// Rethrow error for debugging.
 				throw new Error(
 					sprintf(

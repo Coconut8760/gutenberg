@@ -90,10 +90,7 @@ function NavigationMenuSelector(
 						<MenuGroup label={ __( 'Menus' ) }>
 							<MenuItemsChoice
 								value={ currentMenuId }
-								onSelect={ ( menuId ) => {
-									onClose();
-									onSelectNavigationMenu( menuId );
-								} }
+								onSelect={ onSelectNavigationMenu }
 								choices={ menuChoices }
 							/>
 						</MenuGroup>

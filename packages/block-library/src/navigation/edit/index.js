@@ -197,7 +197,6 @@ function Navigation( {
 		isNavigationMenuResolved,
 		isNavigationMenuMissing,
 		navigationMenus,
-		navigationMenu,
 		canUserUpdateNavigationMenu,
 		hasResolvedCanUserUpdateNavigationMenu,
 		canUserDeleteNavigationMenu,
@@ -227,8 +226,6 @@ function Navigation( {
 	}, [ navigationMenus ] );
 
 	const navRef = useRef();
-
-	const isDraftNavigationMenu = navigationMenu?.status === 'draft';
 
 	const {
 		convert: convertClassicMenu,
@@ -315,11 +312,6 @@ function Navigation( {
 		setDetectedOverlayBackgroundColor,
 	] = useState();
 	const [ detectedOverlayColor, setDetectedOverlayColor ] = useState();
-
-	const handleUpdateMenu = ( menuId ) => {
-		setRef( menuId );
-		selectBlock( clientId );
-	};
 
 	useEffect( () => {
 		hideClassicMenuConversionNotice();
@@ -412,25 +404,6 @@ function Navigation( {
 	] );
 
 	const navigationSelectorRef = useRef();
-	const [ shouldFocusNavigationSelector, setShouldFocusNavigationSelector ] =
-		useState( false );
-
-	// Focus support after menu selection.
-	useEffect( () => {
-		if (
-			isDraftNavigationMenu ||
-			! isEntityAvailable ||
-			! shouldFocusNavigationSelector
-		) {
-			return;
-		}
-		navigationSelectorRef?.current?.focus();
-		setShouldFocusNavigationSelector( false );
-	}, [
-		isDraftNavigationMenu,
-		isEntityAvailable,
-		shouldFocusNavigationSelector,
-	] );
 
 	const resetToEmptyBlock = useCallback( () => {
 		registry.batch( () => {
@@ -669,8 +642,8 @@ function Navigation( {
 						isResolvingCanUserCreateNavigationMenu
 					}
 					onSelectNavigationMenu={ ( menuId ) => {
-						handleUpdateMenu( menuId );
-						setShouldFocusNavigationSelector( true );
+						setRef( menuId );
+						selectBlock( clientId );
 					} }
 					onSelectClassicMenu={ async ( classicMenu ) => {
 						const navMenu = await convertClassicMenu(
@@ -678,8 +651,8 @@ function Navigation( {
 							classicMenu.name
 						);
 						if ( navMenu ) {
-							handleUpdateMenu( navMenu.id );
-							setShouldFocusNavigationSelector( true );
+							setRef( navMenu.id );
+							selectBlock( clientId );
 						}
 					} }
 					onCreateEmpty={ () => createNavigationMenu( '', [] ) }
@@ -692,35 +665,27 @@ function Navigation( {
 		<EntityProvider kind="postType" type="wp_navigation" id={ ref }>
 			<RecursionProvider uniqueId={ recursionId }>
 				<BlockControls>
-					{ ! isDraftNavigationMenu && isEntityAvailable && (
-						<ToolbarGroup className="wp-block-navigation__toolbar-menu-selector">
-							<NavigationMenuSelector
-								ref={ navigationSelectorRef }
-								currentMenuId={ ref }
-								clientId={ clientId }
-								onSelectNavigationMenu={ ( menuId ) => {
-									handleUpdateMenu( menuId );
-									setShouldFocusNavigationSelector( true );
-								} }
-								onSelectClassicMenu={ async ( classicMenu ) => {
-									const navMenu = await convertClassicMenu(
-										classicMenu.id,
-										classicMenu.name
-									);
-									if ( navMenu ) {
-										handleUpdateMenu( navMenu.id );
-										setShouldFocusNavigationSelector(
-											true
-										);
-									}
-								} }
-								onCreateNew={ resetToEmptyBlock }
-								/* translators: %s: The name of a menu. */
-								actionLabel={ __( "Switch to '%s'" ) }
-								showManageActions
-							/>
-						</ToolbarGroup>
-					) }
+					<ToolbarGroup className="wp-block-navigation__toolbar-menu-selector">
+						<NavigationMenuSelector
+							ref={ navigationSelectorRef }
+							currentMenuId={ ref }
+							clientId={ clientId }
+							onSelectNavigationMenu={ setRef }
+							onSelectClassicMenu={ async ( classicMenu ) => {
+								const navMenu = await convertClassicMenu(
+									classicMenu.id,
+									classicMenu.name
+								);
+								if ( navMenu ) {
+									setRef( navMenu.id );
+								}
+							} }
+							onCreateNew={ resetToEmptyBlock }
+							/* translators: %s: The name of a menu. */
+							actionLabel={ __( "Switch to '%s'" ) }
+							showManageActions
+						/>
+					</ToolbarGroup>
 				</BlockControls>
 				{ stylingInspectorControls }
 				{ isEntityAvailable && (
