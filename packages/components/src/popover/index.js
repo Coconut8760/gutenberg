@@ -118,8 +118,12 @@ const placementToAnimationOrigin = ( placement ) => {
 	return x + ' ' + y;
 };
 
-const isTopBottomPlacement = ( placement ) => /top|bottom/i.test( placement );
-const hasBeforePlacement = ( placement ) => /top|left/i.test( placement );
+const isTopBottomPlacement = ( placement ) =>
+	placement.trim().startsWith( 'top' ) ||
+	placement.trim().startsWith( 'bottom' );
+const hasBeforePlacement = ( placement ) =>
+	placement.trim().startsWith( 'top' ) ||
+	placement.trim().startsWith( 'left' );
 
 const Popover = (
 	{
