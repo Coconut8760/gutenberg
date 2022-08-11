@@ -16,6 +16,7 @@ import './globals';
 import initialHtml from './initial-html';
 import setupLocale from './setup-locale';
 import { getTranslation as getGutenbergTranslation } from '../i18n-cache';
+import setup from './setup';
 
 /**
  *	Register Gutenberg editor to React Native App registry.
@@ -52,7 +53,6 @@ const registerGutenberg = ( {
 
 			// We have to lazy import the setup code to prevent executing any code located
 			// at global scope before the editor is initialized, like translations retrieval.
-			const setup = require( './setup' ).default;
 			// Initialize editor
 			this.editorComponent = setup();
 
