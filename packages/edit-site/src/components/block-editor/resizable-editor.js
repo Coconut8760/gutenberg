@@ -40,9 +40,8 @@ const HANDLE_STYLES_OVERRIDE = {
 function ResizableEditor( { enableResizing, settings, children, ...props } ) {
 	const { deviceType, isZoomOutMode } = useSelect(
 		( select ) => ( {
-			deviceType: select(
-				editSiteStore
-			).__experimentalGetPreviewDeviceType(),
+			deviceType:
+				select( editSiteStore ).__experimentalGetPreviewDeviceType(),
 			isZoomOutMode:
 				select( blockEditorStore ).__unstableGetEditorMode() ===
 				'zoom-out',
