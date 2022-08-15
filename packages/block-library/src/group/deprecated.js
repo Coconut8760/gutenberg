@@ -116,7 +116,7 @@ const deprecated = [
 					...attributes,
 					layout: {
 						...layout,
-						type: 'column',
+						type: 'constrained',
 					},
 				};
 			}
