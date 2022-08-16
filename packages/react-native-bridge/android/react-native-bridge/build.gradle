@@ -90,10 +90,10 @@ dependencies {
         exclude group: 'com.github.wordpress-mobile', module: 'react-native-reanimated'
     })
 
-    // runtimeOnly "org.wordpress-mobile:hermes-release-mirror:$rnVersion"
-    implementation("com.facebook.react:hermes-engine:+") { // From node_modules
-        exclude group:'com.facebook.fbjni'
-    }
+    runtimeOnly "org.wordpress-mobile:hermes-release-mirror:$rnVersion"
+    // implementation("com.facebook.react:hermes-engine:+") { // From node_modules
+    //     exclude group:'com.facebook.fbjni'
+    // }
 
     if (willPublishReactNativeBridgeBinary) {
         implementation "org.wordpress-mobile.gutenberg-mobile:react-native-aztec:$reactNativeAztecVersion"

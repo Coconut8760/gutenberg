@@ -268,9 +268,9 @@ dependencies {
         exclude group: 'com.github.wordpress-mobile', module: 'react-native-reanimated'
     })
 
-    implementation("com.facebook.react:hermes-engine:+") { // From node_modules
-        exclude group:'com.facebook.fbjni'
-    }
+    // implementation("com.facebook.react:hermes-engine:+") { // From node_modules
+    //     exclude group:'com.facebook.fbjni'
+    // }
 }
 
 if (isNewArchitectureEnabled()) {

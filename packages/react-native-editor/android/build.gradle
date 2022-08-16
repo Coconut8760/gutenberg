@@ -49,16 +49,12 @@ allprojects {
                 includeGroup "org.wordpress-mobile"
             }
         }
-        // maven { url "https://a8c-libs.s3.amazonaws.com/android/react-native-mirror" }
-        // maven { url "https://a8c-libs.s3.amazonaws.com/android/hermes-mirror" }
-        maven {
-            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-            url("../../../../node_modules/react-native/android")
-        }
-        maven {
-            // Android JSC is installed from npm
-            url("../../../../node_modules/jsc-android/dist")
-        }
+        maven { url "https://a8c-libs.s3.amazonaws.com/android/react-native-mirror" }
+        maven { url "https://a8c-libs.s3.amazonaws.com/android/hermes-mirror" }
+        // maven {
+        //     // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+        //     url("../../../../node_modules/react-native/android")
+        // }
         maven { url 'https://www.jitpack.io' }
         google()
     }
