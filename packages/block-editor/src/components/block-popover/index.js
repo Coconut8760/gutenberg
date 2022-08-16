@@ -61,7 +61,8 @@ export default function BlockPopover( {
 			__unstableSlotName={ __unstablePopoverSlot || null }
 			// Observe movement for block animations (especially horizontal).
 			__unstableObserveElement={ selectedElement }
-			__unstableForcePosition
+			__unstableResize={ false }
+			__unstableFlip={ false }
 			__unstableShift
 			{ ...props }
 			className={ classnames(

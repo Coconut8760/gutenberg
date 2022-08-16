@@ -104,7 +104,8 @@ export default function Form( {
 				<Popover
 					focusOnMount={ false }
 					position="middle right"
-					__unstableForcePosition
+					__unstableResize={ false }
+					__unstableFlip={ false }
 				>
 					<div
 						ref={ ref }

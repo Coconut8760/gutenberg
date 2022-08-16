@@ -74,7 +74,8 @@ export default {
 		},
 		__unstableSlotName: { control: { type: null } },
 		__unstableObserveElement: { control: { type: null } },
-		__unstableForcePosition: { control: { type: 'boolean' } },
+		__unstableResize: { control: { type: 'boolean' } },
+		__unstableFlip: { control: { type: 'boolean' } },
 		__unstableShift: { control: { type: 'boolean' } },
 	},
 };
