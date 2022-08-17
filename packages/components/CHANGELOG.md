@@ -8,6 +8,7 @@
 
 ### Bug Fix
 
+-   `ToggleGroupControl`: Fix minor inconsistency in label height ([#43331](https://github.com/WordPress/gutenberg/pull/43331)).
 -   `Popover`: fix and improve opening animation ([#43186](https://github.com/WordPress/gutenberg/pull/43186)).
 
 ### Enhancements
