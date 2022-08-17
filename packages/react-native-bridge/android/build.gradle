@@ -13,9 +13,5 @@ plugins {
 allprojects {
     repositories {
         maven { url "https://a8c-libs.s3.amazonaws.com/android/react-native-mirror" }
-        // maven {
-        //     // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-        //     url("../../../../node_modules/react-native/android")
-        // }
     }
 }

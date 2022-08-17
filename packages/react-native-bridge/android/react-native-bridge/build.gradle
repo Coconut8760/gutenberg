@@ -45,7 +45,6 @@ android {
 
 repositories {
     maven { url "https://a8c-libs.s3.amazonaws.com/android" }
-    maven { url "https://a8c-libs.s3.amazonaws.com/android/hermes-mirror" }
     maven { url "https://jitpack.io" }
     google()
     mavenCentral {
@@ -90,10 +89,9 @@ dependencies {
         exclude group: 'com.github.wordpress-mobile', module: 'react-native-reanimated'
     })
 
-    runtimeOnly "org.wordpress-mobile:hermes-release-mirror:$rnVersion"
-    // implementation("com.facebook.react:hermes-engine:+") { // From node_modules
-    //     exclude group:'com.facebook.fbjni'
-    // }
+    runtimeOnly("com.facebook.react:hermes-engine:$rnVersion", {
+        exclude group:'com.facebook.fbjni'
+    })
 
     if (willPublishReactNativeBridgeBinary) {
         implementation "org.wordpress-mobile.gutenberg-mobile:react-native-aztec:$reactNativeAztecVersion"

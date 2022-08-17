@@ -244,7 +244,7 @@ dependencies {
     })
     implementation 'androidx.appcompat:appcompat:1.2.0'
     //noinspection GradleDynamicVersion
-    implementation "com.facebook.react:react-native:${extractPackageVersion(packageJson, 'react-native', 'dependencies')}" // From node_modules
+    implementation "com.facebook.react:react-native:${extractPackageVersion(packageJson, 'react-native', 'dependencies')}"
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
@@ -268,9 +268,9 @@ dependencies {
         exclude group: 'com.github.wordpress-mobile', module: 'react-native-reanimated'
     })
 
-    // implementation("com.facebook.react:hermes-engine:+") { // From node_modules
-    //     exclude group:'com.facebook.fbjni'
-    // }
+    implementation("com.facebook.react:hermes-engine:${extractPackageVersion(packageJson, 'react-native', 'dependencies')}") {
+        exclude group:'com.facebook.fbjni'
+    }
 }
 
 if (isNewArchitectureEnabled()) {
