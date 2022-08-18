@@ -23,7 +23,7 @@ $components-custom-gradient-picker__padding: $grid-unit-20; // 48px container, 1
 		height: $grid-unit-20;
 		width: $grid-unit-20;
 		top: $components-custom-gradient-picker__padding;
-		// Trim any internal white spacing that would be cause d by inline positioned elements
+		// Trim any internal white spacing that would be caused by inline positioned elements.
 		display: flex;
 	}
 
